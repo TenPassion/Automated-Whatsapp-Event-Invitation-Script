@@ -1,0 +1,68 @@
+Here is the generated base documentation for the WhatsApp message automation code, need parse and edit: 
+Documentation of the WhatsApp Message Automation Code Introduction This Python script is designed to automate the process of sending
+WhatsApp messages using Excel files containing phone numbers and predefined messages. The script uses various Python libraries to automate
+interaction with WhatsApp Web and simplify the sending of messages to multiple recipients. 
+Initial Configuration At the beginning of the script, there is an initial configuration phase to ensure that the necessary directories exist: 
+If the “excels,” “messages,” and “images” directories do not already exist, the script creates them using the os library. The paths to these
+directories are then stored in global variables for later use: 
+EXCEL_SHEET_PATH: Path to the directory containing Excel files. MESSAGE_PATH: Path to the directory containing predefined messages.
+IMAGE_PATH: Path to the directory containing images. Main Functions The script includes two main functions that manage the program flow. 
+send_to_clipboard(clip_type, filepath) Function This function takes two arguments as input: clip_type (the type of data to copy to the clipboard)
+and filepath (the path of the file to copy). It is used to copy images to the Windows clipboard for later pasting. 
+menu() Function The menu() function displays a main menu for the user, where they can choose from five options: 
+“Upload Excel”: Opens the “excels” directory where the user can select an Excel file. “Draft a Message”: Allows the user to create a text message in
+the “messages” directory using Notepad. “Send a Message”: Automates sending WhatsApp messages using Excel files and predefined messages.
+The user can also choose to attach an image. “Upload Image”: Opens the “images” directory where the user can select an image to use. “Exit”:
+Allows the user to exit the program. app_functions(function_select) Function The app_functions(function_select) function is responsible for
+executing actions corresponding to the user’s selection. It takes the user’s function selection (function_select) as input and performs the following
+actions based on the selection: 
+Case “1” (Upload Excel): Opens the “excels” directory in the file explorer. Case “2” (Draft a Message): Allows the user to create a text message in the
+“messages” directory using Notepad. Case “3” (Send a Message): Automates sending WhatsApp messages using Excel files and predefined
+messages. The user can also choose to attach an image. Case “4” (Upload Image): Opens the “images” directory in the file explorer. Case “5” (Exit):
+Quits the program. The “Case 3” section is the most complex, as it involves multiple steps: 
+The user selects a predefined message. The user can choose to attach an image to the message. The user selects an Excel file containing phone
+numbers and country codes. The script reads the Excel data and opens WhatsApp Web. The phone number is automatically filled in the WhatsApp
+Web search bar. The message text and image (if selected) are copied to the Windows clipboard and pasted into WhatsApp. The message is sent.
+Main Loop The script uses a while loop to keep the main menu running until the user chooses to exit (selection “5”). In each iteration of the loop,
+the user is prompted to choose a menu option. 
+Example 1: Download an Excel File 
+Select the “Upload Excel” option from the main menu. You can now choose an Excel file from the “excels” directory using the file explorer. Code
+snippet: 
+python Edit 
+Run Append Copy 
+Case “1” (Upload Excel) 
+os.startfile(EXCEL_SHEET_PATH) Example 2: Draft a Predefined Message 
+Select the “Draft a Message” option from the main menu. A new Notepad document will open where you can compose your message. Save the
+message with a name in the “messages” directory. Code snippet: 
+python Edit 
+Run Append Copy 
+Case “2” (Draft a Message) 
+messageName = input(“Please give your draft message a name. \n”) os.system(f"start notepad.exe ./messages/{messageName}“) Example 3: Send
+WhatsApp Messages 
+Select the “Send a Message” option from the main menu. You will be guided to choose a predefined message, attach an image if desired, select an
+Excel file, and choose the appropriate columns for phone numbers and country codes. Code snippet (part of “Case 3”): 
+python Edit 
+Run Append Copy 
+Choosing message to sendfor index, message in enumerate(os.listdir(MESSAGE_PATH)): print(index+1, message) message_select = input(“Please choose the message you
+would like to send \n”) 
+Reading message text 
+with open(f"{MESSAGE_PATH}/{os.listdir(MESSAGE_PATH)[int(message_select)-1]}“) as file: selected_text = file.read() 
+Attaching image option 
+image_option = input(“Would you like to attach an image to your message? Y or N \n”) if image_option == ‘Y’: for index, image in
+enumerate(os.listdir(IMAGE_PATH)): print(index+1, image) image_select = input(“Please select the image to be attached. \n”) 
+Excel interaction 
+for index, excel in enumerate(os.listdir(EXCEL_SHEET_PATH)): print(index+1, excel) excel_select = input(“Please choose the Excel file to use \n”) 
+... (continued) 
+Example 4: Quit the Program 
+Select the “Exit” option from the main menu to exit the program. Code snippet: 
+python Edit 
+Run Append Copy 
+Case “5” (Exit) 
+quit() These examples demonstrate how to use various features of the code to download an Excel file, draft a message, send WhatsApp messages,
+and exit 
+the program. You can further customize each step based on your specific needs. 
+Conclusion This script offers advanced automation for sending WhatsApp messages using Excel files for phone numbers, predefined messages
+for message content, and optional images for attachments. It is designed to simplify the process of sending messages in bulk while providing a
+user-friendly text-based interface. 
+To use this script successfully, make sure you have properly set up the “excels,” “messages,” and “images” directories with the appropriate files.
+Also, ensure that you have the required Python libraries installed on your system for execution
